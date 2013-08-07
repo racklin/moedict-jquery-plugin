@@ -11,7 +11,9 @@
       initialized_a: false,
       regex_a: null,
       initialized_t: false,
-      regex_t: null
+      regex_t: null,
+      initialized_h: false,
+      regex_h: null
     };
     window._moedictDataCallback = function(data){
       var lang, lenToRegex, keys, words;
@@ -22,6 +24,9 @@
       } else if (data.lenToRegex_t != null) {
         lang = 't';
         lenToRegex = data.lenToRegex_t;
+      } else if (data.lenToRegex_h != null) {
+        lang = 'h';
+        lenToRegex = data.lenToRegex_h;
       }
       keys = Object.keys(lenToRegex).sort(function(a, b){
         return b - a;
@@ -43,7 +48,7 @@
      *               analyze: true - return words analyzation
      *               dryrun: true - return replaced html
      *               callback: function - receive analyze or dryrun data
-     *               lang:[a|t] - a 國 / t 閩南
+     *               lang:[a|t] - a 國 / t 閩南 / h 客家
      *
      * $('#content').moedict();
      */
@@ -58,7 +63,7 @@
         dryrun: false,
         callback: null
       }, config);
-      if (['a', 't'].indexOf(config.lang) === -1) {
+      if (['a', 't', 'h'].indexOf(config.lang) === -1) {
         config.lang = 'a';
       }
       replaceContent = function(){
@@ -68,7 +73,9 @@
           regex = (ref$ = moedictConfig["regex_" + config.lang]) != null
             ? ref$
             : moedictConfig["regex_a"];
-          langPrefix = config.lang === 't' ? '!' : '';
+          langPrefix = '';
+          langPrefix = config.lang === 't' ? '!' : void 8;
+          langPrefix = config.lang === 'h' ? ':' : void 8;
           if (config.analyze) {
             text = $elem.text();
             wordUsage = {};
