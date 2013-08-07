@@ -65,9 +65,10 @@ let $ = jQuery
       @each ->
         $elem = $(this)
         regex = moedictConfig["regex_#{config.lang}"] ? moedictConfig["regex_a"]
-        lang-prefix = ''
-        lang-prefix = if config.lang == \t then '!'
-        lang-prefix = if config.lang == \h then ':'
+        lang-prefix = switch config.lang
+          | \t => \!
+          | \h => \:
+          | _ => ''
 
         if config.analyze
           text = $elem.text!
