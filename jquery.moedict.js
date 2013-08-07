@@ -14,7 +14,6 @@
       regex_t: null
     };
     window._moedictDataCallback = function(data){
-        alert('xxxx');
       var lang, lenToRegex, keys, words;
       lang = 'a';
       if (data.lenToRegex != null) {
@@ -24,7 +23,6 @@
         lang = 't';
         lenToRegex = data.lenToRegex_t;
       }
-      alert('xxxx' + lang);
       keys = Object.keys(lenToRegex).sort(function(a, b){
         return b - a;
       });
@@ -32,10 +30,8 @@
       keys.forEach(function(k){
         return words.push(lenToRegex[k]);
       });
-      alert('lang = ' + lang);
       moedictConfig["regex_" + lang] = new RegExp(words.join('|'), 'g');
       return moedictConfig["initialized_" + lang] = true;
-
     };
     /**
      * moedict plugin function
@@ -66,14 +62,12 @@
         config.lang = 'a';
       }
       replaceContent = function(){
-          alert('rep');
         this$.each(function(){
           var $elem, regex, ref$, langPrefix, text, wordUsage, html, newHtml;
           $elem = $(this);
           regex = (ref$ = moedictConfig["regex_" + config.lang]) != null
             ? ref$
             : moedictConfig["regex_a"];
-            alert(regex);
           langPrefix = config.lang === 't' ? '!' : '';
           if (config.analyze) {
             text = $elem.text();
@@ -130,7 +124,7 @@
           jsonp: false,
           cache: true,
           jsonCallback: '_moedictDataCallback',
-          url: "lenToRegex." + config.lang + ".json.js",
+          url: "https://www.moedict.tw/lenToRegex." + config.lang + ".json.js",
           complete: function(){
             if (cb) {
               return cb.call();
