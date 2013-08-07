@@ -7,6 +7,7 @@
 
 ## 安裝
 ```
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="http://moedict.org/js/jquery.hoverIntent.js"></script>
 <script src="jquery.moedict.js"></script>
 ```
@@ -20,6 +21,9 @@
   or draw mode
     $('#moretext').moedict({class: 'my-word', spaced: true, draw: true});
 ```
+
+## 範例
+http://racklin.github.io/moedict-jquery-plugin/
 
 # CC0 1.0 公眾領域貢獻宣告
 
