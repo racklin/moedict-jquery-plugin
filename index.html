@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh-hant-TW" class="han-biaodian-pro han-la">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>moedict-jquery-plugin test </title>
+
+<base target="moedict">
+<link rel="stylesheet" href="http://css.hanzi.co/css/han.css">
+<link rel="stylesheet" href="http://css.hanzi.co/css/style.css">
+<link rel="stylesheet" href="http://css.hanzi.co/css/manual.css">
+<link rel="shortcut icon" href="http://css.hanzi.co/img/favicon.png">
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://moedict.org/js/jquery.hoverIntent.js"></script>
+
+<script src="jquery.moedict.js"></script>
+<script src="http://more.handlino.com/javascripts/moretext-1.2.js" type="text/javascript"></script>
+<script src="http://css.hanzi.co/js/han.js"></script>
+<script>
+    jQuery(function(){
+
+        jQuery('#moretext').moreText(4);
+    });
+</script>
+
+<style>
+    @font-face {
+          font-family: "Fira Sans Regular";
+            src: url('FiraSansOT-Regular.eot');
+              src: url('FiraSansOT-Regular.eot?#iefix') format('eot'),
+              url('FiraSansOT-Regular.woff') format('woff'),
+              url('FiraSansOT-Regular.otf') format('opentype'),
+              url('FiraSansOT-Regular.ttf') format('truetype');
+          }
+
+@font-face {
+  font-family: "MOEDICT";
+  src: url('MOEDICT.eot');
+  src: url('MOEDICT.eot?#iefix') format('eot'), url('MOEDICT.woff') format('woff'), url('MOEDICT.otf') format('opentype'), url('MOEDICT.ttf') format('truetype');
+}
+    rt, .rt { font-family: 'Fira Sans Regular', 'Fira Sans OT', sans-serif; font-size: 14px !important }
+    u.pn  { font-family: 'Fira Sans Regular', 'Fira Sans OT', sans-serif;
+        font-size: 18px !important; margin-left: 10px; }
+    rb, .rb { font-family: "XinGothic-Citicpress","XinGothic Citicpress","Lantinghei TC","Hiragino Kaku Gothic Pro","Apple LiGothic","Heiti TC","LiHei Pro","Microsoft YaHei","微軟正黑體","文泉驿正黑",sans-serif; font-size: 20px !important }
+    p { font-size: 20px }
+</style>
+</head>
+<body style="margin: 20px">
+
+<div>
+    <pre>
+萌典 jQuery Plugin 測試:
+    script src="jquery.moedict.js"
+
+    $('#moretext').moedict();
+  or with css class
+    $('#moretext').moedict({class: 'my-word', spaced: true});
+  or draw mode
+    $('#moretext').moedict({class: 'my-word', spaced: true, draw: true});
+    </pre>
+    <p>
+    <input type="button" value="萌化" onclick="jQuery('#moretext').moedict({spaced: true})" />
+    <input type="button" value="萌化畫" onclick="jQuery('#moretext').moedict({spaced: true, draw:true})" />
+    <input type="button" value="reload moretext" onclick="jQuery('#moretext').moreText(4)" />
+    <br/>
+    <input type="button" value="萌化 (dryrun:true)" onclick="jQuery('#moretext').moedict({spaced: true, dryrun: true, callback:function(d){alert(d);}})" />
+    <input type="button" value="萌化 (analyze:true)" onclick="jQuery('#moretext').moedict({analyze: true, callback:function(d){alert(JSON.stringify(d));}})" />
+
+    <h2>MoreText2 Demo</h2>
+    <span id="moretext"></span>
+</div>
+
+</body></html>
