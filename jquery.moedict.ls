@@ -9,6 +9,8 @@ let $ = jQuery
     regex_a: null
     initialized_t: false
     regex_t: null
+    initialized_h: false
+    regex_h: null
 
   window._moedictDataCallback = (data) ->
     lang = \a
@@ -18,6 +20,9 @@ let $ = jQuery
     else if data.lenToRegex_t?
       lang = \t
       lenToRegex = data.lenToRegex_t
+    else if data.lenToRegex_h?
+      lang = \h
+      lenToRegex = data.lenToRegex_h
 
     keys = Object.keys(lenToRegex).sort((a, b) -> b - a)
     words = []
@@ -38,7 +43,7 @@ let $ = jQuery
    *               analyze: true - return words analyzation
    *               dryrun: true - return replaced html
    *               callback: function - receive analyze or dryrun data
-   *               lang:[a|t] - a 國 / t 閩南
+   *               lang:[a|t] - a 國 / t 閩南 / h 客家
    *
    * $('#content').moedict();
    */
@@ -53,14 +58,16 @@ let $ = jQuery
       callback: null
     , config)
 
-    if <[a t]>.indexOf(config.lang) == -1 then config.lang = \a
+    if <[a t h]>.indexOf(config.lang) == -1 then config.lang = \a
 
     replaceContent = ~>
 
       @each ->
         $elem = $(this)
         regex = moedictConfig["regex_#{config.lang}"] ? moedictConfig["regex_a"]
-        lang-prefix = if config.lang == \t then '!' else ''
+        lang-prefix = ''
+        lang-prefix = if config.lang == \t then '!'
+        lang-prefix = if config.lang == \h then ':'
 
         if config.analyze
           text = $elem.text!
