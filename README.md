@@ -21,6 +21,9 @@
     $('#moretext').moedict({class: 'my-word', spaced: true, draw: true});
 ```
 
+## 範例
+http://racklin.github.io/moedict-jquery-plugin/
+
 # CC0 1.0 公眾領域貢獻宣告
 
 除前述資料檔之外，本目錄下的所有其他檔案，由作者 唐鳳 在法律
