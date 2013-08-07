@@ -64,6 +64,10 @@
     <br/>
     <input type="button" value="萌化 (dryrun:true)" onclick="jQuery('#moretext').moedict({spaced: true, dryrun: true, callback:function(d){alert(d);}})" />
     <input type="button" value="萌化 (analyze:true)" onclick="jQuery('#moretext').moedict({analyze: true, callback:function(d){alert(JSON.stringify(d));}})" />
+    <br/>
+    <input type="button" value="萌化(閩南)" onclick="jQuery('#moretext').moedict({spaced: true, lang: 't'})" />
+    <input type="button" value="萌化畫(閩南)" onclick="jQuery('#moretext').moedict({spaced: true, lang: 't', draw:true})" />
+
 
     <h2>MoreText2 Demo</h2>
     <span id="moretext"></span>
