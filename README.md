@@ -3,13 +3,11 @@
 ## 需求
 
 * jQuery 1.5 以上
-* jQuery hoverIntent
 
 ## 安裝
 ```
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://moedict.org/js/jquery.hoverIntent.js"></script>
-<script src="jquery.moedict.js"></script>
+<script src="jquery.moedict.min.js"></script>
 ```
 
 ## 使用

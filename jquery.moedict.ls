@@ -94,7 +94,7 @@ let $ = jQuery
             config.callback.call $elem, newHtml  if config.callback
           else
             $elem.html newHtml
-            $elem.find("a.#{config.class}").hoverIntent(
+            $elem.find("a.#{config.class}").moedictHoverIntent(
               timeout: 250
               out: ->
               over: (e) ->

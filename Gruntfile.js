@@ -3,11 +3,19 @@
   module.exports = function(grunt){
     grunt.task.loadNpmTasks('grunt-lsc');
     grunt.task.loadNpmTasks('grunt-contrib-uglify');
+    grunt.task.loadNpmTasks('grunt-contrib-concat');
     grunt.initConfig({
       lsc: {
         moedict: {
           files: {
             'jquery.moedict.js': ['jquery.moedict.ls']
+          }
+        }
+      },
+      concat: {
+        moedict: {
+          files: {
+            'jquery.moedict.js': ['jquery.moedict.js', 'jquery.hoverIntent.js']
           }
         }
       },
@@ -22,6 +30,6 @@
         }
       }
     });
-    return grunt.registerTask('default', ['lsc', 'uglify']);
+    return grunt.registerTask('default', ['lsc', 'concat', 'uglify']);
   };
 }).call(this);

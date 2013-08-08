@@ -2,6 +2,7 @@ module.exports = (grunt) ->
 
   grunt.task.loadNpmTasks \grunt-lsc
   grunt.task.loadNpmTasks \grunt-contrib-uglify
+  grunt.task.loadNpmTasks \grunt-contrib-concat
 
   grunt.initConfig (
 
@@ -9,6 +10,11 @@ module.exports = (grunt) ->
       moedict:
         files:
           \jquery.moedict.js : <[ jquery.moedict.ls ]>
+
+    concat:
+      moedict:
+        files:
+          \jquery.moedict.js : <[ jquery.moedict.js jquery.hoverIntent.js ]>
 
     uglify:
       moedict:
@@ -18,4 +24,4 @@ module.exports = (grunt) ->
           \jquery.moedict.min.js : <[ jquery.moedict.js ]>
 
   )
-  grunt.registerTask \default, <[ lsc uglify ]>
+  grunt.registerTask \default, <[ lsc concat uglify ]>
