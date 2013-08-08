@@ -97,10 +97,16 @@ let $ = jQuery
             $elem.find("a.#{config.class}").hoverIntent(
               timeout: 250
               out: ->
-              over: ->
-                jQuery \#moedict .remove!
+              over: (e) ->
                 href = jQuery this .attr \href
-                jQuery "<iframe id='moedict' name='moedict' src='#{href}' style='float: right; height: 90%; width: 40%; margin: 0; border-radius: 20px' />" .prependTo \body
+                if 0 == jQuery \#moedict .length
+                  jQuery """
+                    <div id='moedict' style='float: right; height: 90%; width: 40%; margin: 0;' >
+                      <iframe id='moedictFrame' name='moedictFrame' src='#{href}' style='width: 100%; height: 100%; margin: 0; border-radius: 20px;' />
+                    </div>
+                         """ .prependTo \body
+                else
+                  jQuery \#moedictFrame .attr \src href
             )
       this
 
