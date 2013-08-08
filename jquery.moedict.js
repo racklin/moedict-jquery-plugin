@@ -118,11 +118,18 @@
               return $elem.find("a." + config['class']).hoverIntent({
                 timeout: 250,
                 out: function(){},
-                over: function(){
-                  var href;
-                  jQuery('#moedict').remove();
+                over: function(e){
+                  var href, $moedict;
                   href = jQuery(this).attr('href');
-                  return jQuery("<iframe id='moedict' name='moedict' src='" + href + "' style='float: right; height: 90%; width: 40%; margin: 0; border-radius: 20px' />").prependTo('body');
+                  if (0 === jQuery('#moedict').length) {
+                    jQuery("<div id='moedict' style='float: right; height: 90%; width: 40%; margin: 0;' >\n  <iframe id='moedictFrame' name='moedictFrame' src='" + href + "' style='width: 100%; height: 100%; margin: 0; border-radius: 20px;' />\n</div>").prependTo('body');
+                    $moedict = jQuery('#moedict');
+                    return jQuery(window).scroll(function(){
+                      return $moedict.css('margin-top', window.scrollY);
+                    });
+                  } else {
+                    return jQuery('#moedictFrame').attr('src', href);
+                  }
                 }
               });
             }
@@ -151,5 +158,6 @@
         return replaceContent();
       }
     };
+    $.fn.moedict.VERSION = '1.1.0';
   }.call(this, jQuery));
 }).call(this);
