@@ -74,8 +74,12 @@
             ? ref$
             : moedictConfig["regex_a"];
           langPrefix = '';
-          langPrefix = config.lang === 't' ? '!' : void 8;
-          langPrefix = config.lang === 'h' ? ':' : void 8;
+          if (config.lang === 't') {
+            langPrefix = '!';
+          }
+          if (config.lang === 'h') {
+            langPrefix = ':';
+          }
           if (config.analyze) {
             text = $elem.text();
             wordUsage = {};
