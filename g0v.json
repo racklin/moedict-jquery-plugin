@@ -3,7 +3,8 @@
   "status": "beta",
   "name": "moedict-jquery-plugin",
   "name_zh": "萌典 jQuery Plugin",
-  "description": "Moedict.tw 's jQuery Plugin",
+  "description": "Moedict.tw jQuery Plugin",
+  "description_zh": "萌典 jQuery Plugin",
   "homepage": "https://github.com/racklin/moedict-jquery-plugin",
   "repository": {
     "type": "git",
