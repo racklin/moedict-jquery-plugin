@@ -110,7 +110,7 @@ let $ = jQuery
                 else
                   jQuery \#moedictFrame .attr \src href
                 jQuery \#moedict .css( do
-                  \top : document.body.scrollTop + document.body.clientHeight/20
+                  \top : window.scrollY + document.body.clientHeight/20
                   \left : if (document.body.clientWidth/2) > e.pageX then document.body.clientWidth - jQuery('#moedict').width! else 0
                 ).show!
 
