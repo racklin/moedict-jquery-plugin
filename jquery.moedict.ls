@@ -101,16 +101,19 @@ let $ = jQuery
                 href = jQuery this .attr \href
                 if 0 == jQuery \#moedict .length
                   jQuery """
-                    <div id='moedict' style='float: right; height: 90%; width: 40%; margin: 0;' >
+                    <div id='moedict' style='position:absolute; height: 90%; width: 40%; margin: 0; z-index:9999;' >
+                      <div id='moedict-controls' style='padding-right: 20px; background-color: \#F8F9F8; text-align:right;'><a href="\#" onclick='jQuery("\#moedict").css({left: (jQuery("\#moedict").position().left < (document.body.clientWidth/2)?(document.body.clientWidth-jQuery("\#moedict").width()):0)});return false;'>←→</a> | <a href="\#" onclick='jQuery("\#moedict").hide();return false;'>X</a></div>
                       <iframe id='moedictFrame' name='moedictFrame' src='#{href}' style='width: 100%; height: 100%; margin: 0; border-radius: 20px;' />
                     </div>
                          """ .prependTo \body
 
-                  $moedict = jQuery \#moedict
-                  jQuery window .scroll -> $moedict.css \margin-top window.scrollY
-
                 else
                   jQuery \#moedictFrame .attr \src href
+                jQuery \#moedict .css( do
+                  \top : document.body.scrollTop + document.body.clientHeight/20
+                  \left : if (document.body.clientWidth/2) > e.pageX then document.body.clientWidth - jQuery('#moedict').width! else 0
+                ).show!
+
             )
       this
 
