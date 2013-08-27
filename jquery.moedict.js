@@ -127,7 +127,7 @@
                     jQuery('#moedictFrame').attr('src', href);
                   }
                   return jQuery('#moedict').css({
-                    'top': document.body.scrollTop + document.body.clientHeight / 20,
+                    'top': window.scrollY + document.body.clientHeight / 20,
                     'left': document.body.clientWidth / 2 > e.pageX ? document.body.clientWidth - jQuery('#moedict').width() : 0
                   }).show();
                 }
